@@ -6,7 +6,7 @@ import {
 
 const App = function App():JSX.Element {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ backgroundColor: '#FF5C00', flex: 1 }}>
       <Text>Ola mundo</Text>
     </SafeAreaView>
 
