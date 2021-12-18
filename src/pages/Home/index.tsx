@@ -4,7 +4,7 @@ import {
   Text,
 } from 'react-native';
 
-const App = function App():JSX.Element {
+const Home = function Home():JSX.Element {
   return (
     <SafeAreaView style={{ backgroundColor: '#FF5C00', flex: 1 }}>
       <Text>Ola mundo</Text>
@@ -13,4 +13,4 @@ const App = function App():JSX.Element {
   );
 };
 
-export default App;
+export default Home;
