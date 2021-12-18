@@ -3,16 +3,21 @@ import {
   Text,
   View
 } from 'react-native';
-import {BACKGROUND_COLOR} from "assets/colors";
+import {BACKGROUND_COLOR_PRIMARY, BACKGROUND_COLOR_SECONDARY} from "assets/colors";
+import {Screen,BodyContainer,HeaderContainer} from './styles'
 
 const Home = function Home():JSX.Element {
-  console.log(BACKGROUND_COLOR);
   return (
-    <View style={{ backgroundColor: BACKGROUND_COLOR, flex: 1 }}>
-      <Text>Ola mundo</Text>
-    </View>
+    <Screen>
+      <HeaderContainer></HeaderContainer>
+      <BodyContainer>
+      </BodyContainer>
+    </Screen>
 
   );
 };
 
 export default Home;
+
+
+

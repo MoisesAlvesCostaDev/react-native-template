@@ -1,4 +1,5 @@
-export const  BACKGROUND_COLOR = '#FF5C00';
+export const  BACKGROUND_COLOR_PRIMARY = '#FF5C00';
+export const  BACKGROUND_COLOR_SECONDARY = '#FFFFFF';
 export const  INPUT_TITLE_COLOR = '#646464';
 export const  INPUT_PLACEHOLDER_COLOR = '#8398AE';
 export const  INPUT_VALIDATION_TEXT_COLOR = '#EE0000';
