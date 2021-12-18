@@ -3,14 +3,8 @@ import {BACKGROUND_COLOR_PRIMARY, BACKGROUND_COLOR_SECONDARY} from "assets/color
 
 
 
-
-export const HeaderContainer = styled.View`
-  flex: 1;
-`;
-
-
 export const BodyContainer = styled.View`
-  flex: 11;
+  flex: 6;
   background-color: ${BACKGROUND_COLOR_SECONDARY};
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
