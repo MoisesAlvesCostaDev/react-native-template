@@ -1,14 +1,16 @@
 import React from 'react';
 import {
-  SafeAreaView,
   Text,
+  View
 } from 'react-native';
+import {BACKGROUND_COLOR} from "assets/colors";
 
 const Home = function Home():JSX.Element {
+  console.log(BACKGROUND_COLOR);
   return (
-    <SafeAreaView style={{ backgroundColor: '#FF5C00', flex: 1 }}>
+    <View style={{ backgroundColor: BACKGROUND_COLOR, flex: 1 }}>
       <Text>Ola mundo</Text>
-    </SafeAreaView>
+    </View>
 
   );
 };
