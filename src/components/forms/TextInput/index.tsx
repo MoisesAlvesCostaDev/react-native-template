@@ -1,5 +1,9 @@
 import React, { useRef, useEffect, useCallback } from "react";
-import { TextInput, TextInputProps, Text, StyleSheet } from "react-native";
+import {
+  TextInput as ReactInput,
+  TextInputProps,
+  StyleSheet,
+} from "react-native";
 import { useField } from "@unform/core";
 import {
   StyledLabel,
@@ -7,20 +11,18 @@ import {
   StyledInputRow,
   StyledValidationText,
 } from "./style";
-import Icon from 'react-native-vector-icons/FontAwesome';
-import {INPUT_TITLE_COLOR} from "assets/colors";
-
-
+import Icon from "react-native-vector-icons/FontAwesome";
+import { INPUT_TITLE_COLOR } from "assets/colors";
 
 interface InputProps extends TextInputProps {
   name: string;
   label: string;
   leftIcon?: string;
 }
-interface InputReference extends TextInput {
+interface InputReference extends ReactInput {
   value: string;
 }
-export default function SimpleInput({
+export default function TextInput({
   name,
   label,
   leftIcon,
@@ -69,9 +71,8 @@ export default function SimpleInput({
     <StyledInputContainer>
       {label && <StyledLabel>{label}</StyledLabel>}
       <StyledInputRow>
-      {leftIcon &&<Icon name={leftIcon} size={12} style={styles.LeftIcon} />
-        }
-        <TextInput
+        {leftIcon && <Icon name={leftIcon} size={12} style={styles.LeftIcon} />}
+        <ReactInput
           style={styles.TextInput}
           ref={inputRef}
           onChangeText={handleChangeText}
@@ -95,8 +96,8 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 35,
   },
-  LeftIcon:{
+  LeftIcon: {
     marginRight: 8,
     color: INPUT_TITLE_COLOR,
-  }
+  },
 });
