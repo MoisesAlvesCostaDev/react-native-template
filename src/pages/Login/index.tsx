@@ -10,6 +10,8 @@ import { BodyContainer, ForgotPasswordText } from "./styles";
 import { Form } from "@unform/mobile";
 import { SubmitHandler, FormHandles } from "@unform/core";
 import TextInput from "components/forms/TextInput";
+import PasswordInput from "components/forms/PasswordInput";
+
 import Button from "components/Button";
 
 interface FormData {
@@ -43,10 +45,14 @@ const Home = function Home(): JSX.Element {
             label="Digite seu e-mail"
             placeholder="E-mail"
           />
-          <TextInput
+          <PasswordInput
+            leftIcon="lock"
+            canRevealPassword={true}
             name="password"
             label="Digite sua senha"
             placeholder="Digite sua senha"
+            autoCapitalize="none"
+            textContentType="password"
           />
           <Button style={{ marginTop: 25 }} title="Enviar"></Button>
         </Form>

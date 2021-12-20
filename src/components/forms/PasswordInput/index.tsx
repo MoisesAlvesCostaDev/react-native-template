@@ -1,8 +1,9 @@
-import React, { useRef, useEffect, useCallback } from "react";
+import React, { useRef, useEffect, useCallback, useState } from "react";
 import {
   TextInput as ReactInput,
   TextInputProps,
   StyleSheet,
+  TouchableOpacity,
 } from "react-native";
 import { useField } from "@unform/core";
 import {
@@ -18,19 +19,22 @@ interface InputProps extends TextInputProps {
   name: string;
   label: string;
   leftIcon?: string;
+  canRevealPassword: boolean;
 }
 interface InputReference extends ReactInput {
   value: string;
 }
-export default function TextInput({
+export default function PasswordInput({
   name,
   label,
   leftIcon,
+  canRevealPassword,
   onChangeText,
   ...rest
 }: InputProps) {
   const inputRef = useRef<InputReference>(null);
   const { fieldName, registerField, defaultValue = "", error } = useField(name);
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     if (inputRef.current) inputRef.current.value = defaultValue;
@@ -71,14 +75,28 @@ export default function TextInput({
     <StyledInputContainer>
       {label && <StyledLabel>{label}</StyledLabel>}
       <StyledInputRow>
-        {leftIcon && <Icon name={leftIcon} size={15} style={styles.LeftIcon} />}
+        {leftIcon && <Icon name={leftIcon} size={20} style={styles.Icon} />}
         <ReactInput
           style={styles.TextInput}
           ref={inputRef}
           onChangeText={handleChangeText}
           defaultValue={defaultValue}
+          secureTextEntry={showPassword ? false : true}
           {...rest}
         />
+        {canRevealPassword && (
+          <TouchableOpacity
+            onPress={() => {
+              setShowPassword(!showPassword);
+            }}
+          >
+            {showPassword ? (
+              <Icon name={"eye-slash"} size={20} style={styles.Icon} />
+            ) : (
+              <Icon name={"eye"} size={20} style={styles.Icon} />
+            )}
+          </TouchableOpacity>
+        )}
       </StyledInputRow>
       <StyledValidationText>{error}</StyledValidationText>
     </StyledInputContainer>
@@ -96,7 +114,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 35,
   },
-  LeftIcon: {
+  Icon: {
     marginRight: 8,
     color: INPUT_TITLE_COLOR,
   },
