@@ -1,30 +1,19 @@
-import React, { useRef } from "react";
-import { Image, TouchableOpacity, Text } from "react-native";
+import React, { useState } from "react";
+import { Image } from "react-native";
 import {
   Screen,
   TitleScreen,
   HeaderContainer,
   ImageHeaderContainer,
 } from "assets/styles/Screen";
-import { BodyContainer, ForgotPasswordText } from "./styles";
-import { Form } from "@unform/mobile";
-import { SubmitHandler, FormHandles } from "@unform/core";
-import TextInput from "components/forms/TextInput";
-import PasswordInput from "components/forms/PasswordInput";
+import { BodyContainer } from "./styles";
+import { forgotPasswordSteps } from "misc/forgotPasswordSteps";
 
-import Button from "components/Button";
-
-interface FormData {
-  name: string;
-  email: string;
-}
-
+let ChildComponent: any;
 const ForgotPassword = function ForgotPassword(): JSX.Element {
-  const formRef = useRef<FormHandles>(null);
+  const [stepCurrent, setStepCurrent] = useState(forgotPasswordSteps[0]);
 
-  const handleSubmit: SubmitHandler<FormData> = (data) => {
-    console.log(formRef.current?.getData());
-  };
+  ChildComponent = stepCurrent.component;
 
   return (
     <Screen>
@@ -35,19 +24,10 @@ const ForgotPassword = function ForgotPassword(): JSX.Element {
             style={{ height: 120, width: 120 }}
           />
         </ImageHeaderContainer>
-        <TitleScreen>Recuperar senha solicitar código</TitleScreen>
+        <TitleScreen>{stepCurrent.title}</TitleScreen>
       </HeaderContainer>
       <BodyContainer>
-        <Form ref={formRef} onSubmit={handleSubmit}>
-          <TextInput
-            leftIcon="user-o"
-            name="email"
-            label="Digite seu e-mail"
-            placeholder="E-mail"
-          />
-          <Button style={{ marginTop: 25 }} title="Enviar"></Button>
-        </Form>
-        <Button style={{ marginTop: 10 }} title="Cancelar"></Button>
+        <ChildComponent setStepCurrent={setStepCurrent}></ChildComponent>
       </BodyContainer>
     </Screen>
   );
