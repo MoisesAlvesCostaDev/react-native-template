@@ -11,20 +11,38 @@ import { Form } from "@unform/mobile";
 import { SubmitHandler, FormHandles } from "@unform/core";
 import TextInput from "components/forms/TextInput";
 import PasswordInput from "components/forms/PasswordInput";
-
 import Button from "components/Button";
+import { Api } from "../../services/api";
 
-interface FormData {
-  name: string;
+interface IFormData {
   email: string;
+  password: string;
 }
 
-const Home = function Home(): JSX.Element {
+const Login = function Login(): JSX.Element {
   const formRef = useRef<FormHandles>(null);
 
-  const handleSubmit: SubmitHandler<FormData> = (data) => {
-    console.log(formRef.current?.getData());
-  };
+  async function login(loginData: IFormData): Promise<string> {
+    try {
+      console.log(loginData);
+      const response = await Api.post("/login", loginData);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+
+    return "";
+  }
+
+  async function handleSubmit() {
+    const email = formRef.current?.getData().email;
+    const password = formRef.current?.getData().password;
+    const loginData: IFormData = {
+      email: formRef.current?.getData().email,
+      password: formRef.current?.getData().password,
+    };
+    const tokem: string = await login(loginData);
+  }
 
   return (
     <Screen>
@@ -54,7 +72,13 @@ const Home = function Home(): JSX.Element {
             autoCapitalize="none"
             textContentType="password"
           />
-          <Button style={{ marginTop: 25 }} title="Enviar"></Button>
+          <Button
+            style={{ marginTop: 25 }}
+            title="Enviar"
+            onPress={() => {
+              handleSubmit();
+            }}
+          ></Button>
         </Form>
         <TouchableOpacity>
           <ForgotPasswordText>Esqueci minha senha!</ForgotPasswordText>
@@ -64,4 +88,4 @@ const Home = function Home(): JSX.Element {
   );
 };
 
-export default Home;
+export default Login;
