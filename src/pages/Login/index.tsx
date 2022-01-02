@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Image, TouchableOpacity, Text } from "react-native";
 import {
   Screen,
@@ -13,6 +13,7 @@ import TextInput from "components/forms/TextInput";
 import PasswordInput from "components/forms/PasswordInput";
 import Button from "components/Button";
 import { Api } from "../../services/api";
+import Modal from "components/Modal";
 
 interface IFormData {
   email: string;
@@ -21,6 +22,7 @@ interface IFormData {
 
 const Login = function Login(): JSX.Element {
   const formRef = useRef<FormHandles>(null);
+  const [modalVisible, setModalVisible] = useState(false);
 
   async function login(loginData: IFormData): Promise<string> {
     try {
@@ -30,7 +32,7 @@ const Login = function Login(): JSX.Element {
     } catch (error) {
       console.log(error);
     }
-
+    setModalVisible(true);
     return "";
   }
 
@@ -45,46 +47,52 @@ const Login = function Login(): JSX.Element {
   }
 
   return (
-    <Screen>
-      <HeaderContainer>
-        <ImageHeaderContainer>
-          <Image
-            source={require("../../assets/images/logo.png")}
-            style={{ height: 120, width: 120 }}
-          />
-        </ImageHeaderContainer>
-        <TitleScreen>Login</TitleScreen>
-      </HeaderContainer>
-      <BodyContainer>
-        <Form ref={formRef} onSubmit={handleSubmit}>
-          <TextInput
-            leftIcon="user-o"
-            name="email"
-            label="Digite seu e-mail"
-            placeholder="E-mail"
-          />
-          <PasswordInput
-            leftIcon="lock"
-            canRevealPassword={true}
-            name="password"
-            label="Digite sua senha"
-            placeholder="Digite sua senha"
-            autoCapitalize="none"
-            textContentType="password"
-          />
-          <Button
-            style={{ marginTop: 25 }}
-            title="Enviar"
-            onPress={() => {
-              handleSubmit();
-            }}
-          ></Button>
-        </Form>
-        <TouchableOpacity>
-          <ForgotPasswordText>Esqueci minha senha!</ForgotPasswordText>
-        </TouchableOpacity>
-      </BodyContainer>
-    </Screen>
+    <>
+      <Screen>
+        <HeaderContainer>
+          <ImageHeaderContainer>
+            <Image
+              source={require("../../assets/images/logo.png")}
+              style={{ height: 120, width: 120 }}
+            />
+          </ImageHeaderContainer>
+          <TitleScreen>Login</TitleScreen>
+        </HeaderContainer>
+        <BodyContainer>
+          <Form ref={formRef} onSubmit={handleSubmit}>
+            <TextInput
+              leftIcon="user-o"
+              name="email"
+              label="Digite seu e-mail"
+              placeholder="E-mail"
+            />
+            <PasswordInput
+              leftIcon="lock"
+              canRevealPassword={true}
+              name="password"
+              label="Digite sua senha"
+              placeholder="Digite sua senha"
+              autoCapitalize="none"
+              textContentType="password"
+            />
+            <Button
+              style={{ marginTop: 25 }}
+              title="Enviar"
+              onPress={() => {
+                handleSubmit();
+              }}
+            ></Button>
+          </Form>
+          <TouchableOpacity>
+            <ForgotPasswordText>Esqueci minha senha!</ForgotPasswordText>
+          </TouchableOpacity>
+        </BodyContainer>
+      </Screen>
+      <Modal
+        setModalVisible={setModalVisible}
+        modalVisible={modalVisible}
+      ></Modal>
+    </>
   );
 };
 
