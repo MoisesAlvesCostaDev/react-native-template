@@ -14,6 +14,9 @@ import PasswordInput from "components/forms/PasswordInput";
 import Button from "components/Button";
 import { Api } from "../../services/api";
 import Modal from "components/Modal";
+import { validationSchema } from "./validation";
+import * as Yup from "yup";
+import { string } from "yup/lib/locale";
 
 interface IFormData {
   email: string;
@@ -26,24 +29,42 @@ const Login = function Login(): JSX.Element {
 
   async function login(loginData: IFormData): Promise<string> {
     try {
-      console.log(loginData);
       const response = await Api.post("/login", loginData);
       return response.data;
-    } catch (error) {
-      console.log(error);
+    } catch (erro) {
+      console.log("erro", erro);
     }
     setModalVisible(true);
     return "";
   }
 
   async function handleSubmit() {
-    const email = formRef.current?.getData().email;
-    const password = formRef.current?.getData().password;
-    const loginData: IFormData = {
-      email: formRef.current?.getData().email,
-      password: formRef.current?.getData().password,
-    };
-    const tokem: string = await login(loginData);
+    try {
+      formRef?.current?.setErrors({});
+      const email = formRef.current?.getData().email;
+      const password = formRef.current?.getData().password;
+
+      const loginData: IFormData = {
+        email: formRef.current?.getData().email,
+        password: formRef.current?.getData().password,
+      };
+
+      await validationSchema.validate(loginData, {
+        abortEarly: false,
+      });
+      const tokem: string = await login(loginData);
+    } catch (errors) {
+      const validationErrors = {} as any;
+      if (errors instanceof Yup.ValidationError) {
+        errors.inner.forEach((error) => {
+          console.log("error path", error.path, "error message", error.message);
+          if (error.path) {
+            validationErrors[error.path] = error.message;
+          }
+        });
+        formRef?.current?.setErrors(validationErrors);
+      }
+    }
   }
 
   return (
