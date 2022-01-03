@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Image, TouchableOpacity, Text } from "react-native";
+import { Image, TouchableOpacity } from "react-native";
 import {
   Screen,
   TitleScreen,
@@ -8,7 +8,7 @@ import {
 } from "assets/styles/Screen";
 import { BodyContainer, ForgotPasswordText } from "./styles";
 import { Form } from "@unform/mobile";
-import { SubmitHandler, FormHandles } from "@unform/core";
+import { FormHandles } from "@unform/core";
 import TextInput from "components/forms/TextInput";
 import PasswordInput from "components/forms/PasswordInput";
 import Button from "components/Button";
@@ -16,7 +16,6 @@ import { Api } from "../../services/api";
 import Modal from "components/Modal";
 import { validationSchema } from "./validation";
 import * as Yup from "yup";
-import { string } from "yup/lib/locale";
 
 interface IFormData {
   email: string;
@@ -57,7 +56,6 @@ const Login = function Login(): JSX.Element {
       const validationErrors = {} as any;
       if (errors instanceof Yup.ValidationError) {
         errors.inner.forEach((error) => {
-          console.log("error path", error.path, "error message", error.message);
           if (error.path) {
             validationErrors[error.path] = error.message;
           }
