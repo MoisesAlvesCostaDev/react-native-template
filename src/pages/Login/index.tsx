@@ -16,6 +16,7 @@ import { Api } from "../../services/api";
 import Modal from "components/Modal";
 import { validationSchema } from "./validation";
 import * as Yup from "yup";
+import { useAuth } from "hooks/Auth";
 
 interface IFormData {
   email: string;
@@ -25,6 +26,7 @@ interface IFormData {
 const Login = function Login(): JSX.Element {
   const formRef = useRef<FormHandles>(null);
   const [modalVisible, setModalVisible] = useState(false);
+  const { signIn } = useAuth();
 
   async function login(loginData: IFormData): Promise<string> {
     try {
@@ -40,8 +42,6 @@ const Login = function Login(): JSX.Element {
   async function handleSubmit() {
     try {
       formRef?.current?.setErrors({});
-      const email = formRef.current?.getData().email;
-      const password = formRef.current?.getData().password;
 
       const loginData: IFormData = {
         email: formRef.current?.getData().email,
@@ -51,7 +51,9 @@ const Login = function Login(): JSX.Element {
       await validationSchema.validate(loginData, {
         abortEarly: false,
       });
-      const tokem: string = await login(loginData);
+
+      const token: string = await login(loginData);
+      signIn(token);
     } catch (errors) {
       const validationErrors = {} as any;
       if (errors instanceof Yup.ValidationError) {
@@ -100,7 +102,7 @@ const Login = function Login(): JSX.Element {
               onPress={() => {
                 handleSubmit();
               }}
-            ></Button>
+            />
           </Form>
           <TouchableOpacity>
             <ForgotPasswordText>Esqueci minha senha!</ForgotPasswordText>
