@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { Form } from "@unform/mobile";
 import { SubmitHandler, FormHandles } from "@unform/core";
 import PasswordInput from "components/forms/PasswordInput";
+import { useNavigation } from "@react-navigation/native";
 
 import Button from "components/Button";
 
@@ -12,6 +13,7 @@ interface FormData {
 
 const ChangePassword = function ChangePassword(): JSX.Element {
   const formRef = useRef<FormHandles>(null);
+  const navigation = useNavigation<any>();
 
   const handleSubmit: SubmitHandler<FormData> = (data) => {
     console.log(formRef.current?.getData());
@@ -38,7 +40,13 @@ const ChangePassword = function ChangePassword(): JSX.Element {
         textContentType="password"
       />
       <Button style={{ marginTop: 25 }} title="Alterar"></Button>
-      <Button style={{ marginTop: 10 }} title="Cancelar"></Button>
+      <Button
+        onPress={() => {
+          navigation.navigate("Login");
+        }}
+        style={{ marginTop: 10 }}
+        title="Cancelar"
+      ></Button>
     </Form>
   );
 };
