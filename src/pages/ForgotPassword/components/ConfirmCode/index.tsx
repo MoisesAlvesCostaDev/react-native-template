@@ -3,6 +3,7 @@ import { Form } from "@unform/mobile";
 import { SubmitHandler, FormHandles } from "@unform/core";
 import TextInput from "components/forms/TextInput";
 import { forgotPasswordSteps, steps } from "misc/forgotPasswordSteps";
+import { useNavigation } from "@react-navigation/native";
 
 import Button from "components/Button";
 
@@ -16,6 +17,7 @@ const ConfirmCode = function ConfirmCode({
   setStepCurrent: React.Dispatch<React.SetStateAction<steps>>;
 }): JSX.Element {
   const formRef = useRef<FormHandles>(null);
+  const navigation = useNavigation<any>();
 
   const handleSubmit: SubmitHandler<FormData> = (data) => {
     console.log(formRef.current?.getData());
@@ -38,7 +40,13 @@ const ConfirmCode = function ConfirmCode({
           setStepCurrent(forgotPasswordSteps[0]);
         }}
       ></Button>
-      <Button style={{ marginTop: 10 }} title="Cancelar"></Button>
+      <Button
+        onPress={() => {
+          navigation.navigate("Login");
+        }}
+        style={{ marginTop: 10 }}
+        title="Cancelar"
+      ></Button>
     </Form>
   );
 };

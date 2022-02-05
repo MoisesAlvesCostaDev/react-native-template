@@ -2,21 +2,22 @@ import React, { useRef } from "react";
 import { Form } from "@unform/mobile";
 import { SubmitHandler, FormHandles } from "@unform/core";
 import TextInput from "components/forms/TextInput";
-import ConfirmCode from "../ConfirmCode";
 import Button from "components/Button";
 import { forgotPasswordSteps, steps } from "misc/forgotPasswordSteps";
+import { useNavigation } from "@react-navigation/native";
 
 interface FormData {
   name: string;
   email: string;
 }
 
-const RequestCode = function RequestCode({
-  setStepCurrent,
-}: {
+export interface IForgotPasswordProps {
   setStepCurrent: React.Dispatch<React.SetStateAction<steps>>;
-}): JSX.Element {
+}
+
+const RequestCode: React.FC<IForgotPasswordProps> = ({ setStepCurrent }) => {
   const formRef = useRef<FormHandles>(null);
+  const navigation = useNavigation<any>();
 
   const handleSubmit: SubmitHandler<FormData> = (data) => {
     console.log(formRef.current?.getData());
@@ -35,6 +36,13 @@ const RequestCode = function RequestCode({
         title="Enviar"
         onPress={() => {
           setStepCurrent(forgotPasswordSteps[1]);
+        }}
+      ></Button>
+      <Button
+        style={{ marginTop: 10 }}
+        title="Cancelar"
+        onPress={() => {
+          navigation.navigate("Login");
         }}
       ></Button>
     </Form>

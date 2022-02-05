@@ -17,6 +17,7 @@ import Modal from "components/Modal";
 import { validationSchema } from "./validation";
 import * as Yup from "yup";
 import { useAuth } from "hooks/Auth";
+import { useNavigation } from "@react-navigation/native";
 
 interface IFormData {
   email: string;
@@ -27,6 +28,7 @@ const Login = function Login(): JSX.Element {
   const formRef = useRef<FormHandles>(null);
   const [modalVisible, setModalVisible] = useState(false);
   const { signIn } = useAuth();
+  const navigation = useNavigation<any>();
 
   async function login(loginData: IFormData): Promise<string> {
     try {
@@ -105,7 +107,13 @@ const Login = function Login(): JSX.Element {
             />
           </Form>
           <TouchableOpacity>
-            <ForgotPasswordText>Esqueci minha senha!</ForgotPasswordText>
+            <ForgotPasswordText
+              onPress={() => {
+                navigation.navigate("ForgotPassword");
+              }}
+            >
+              Esqueci minha senha!
+            </ForgotPasswordText>
           </TouchableOpacity>
         </BodyContainer>
       </Screen>
