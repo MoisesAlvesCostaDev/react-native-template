@@ -27,6 +27,8 @@ Este projeto tem o objetivo de criar um templete em React Native com TypeScript.
 
 O Designer foi feito no figma e pode ser acessado em: [Telas](https://www.figma.com/file/Au23xfPmQHFgLec6WGjNo5/React-native-template?node-id=0%3A1)
 
+![Alt text](relative/path/to/screens.png?raw=true "Designer")
+
 ### Feito Com
 
 Abaixo segue o que foi utilizado na criação deste template:
@@ -87,6 +89,22 @@ react-native-template
 └── tsconfig.json
 ```
 
+- **src** - Diretório contendo todos os arquivos da aplicação.
+
+- **components** - Diretório contendo todos os arquivos de components communs da aplicação.
+
+- **config** - Diretório para guardar os arquivos de configuração.
+
+- **assets** - Diretório para guardar os arquivos de imagem, cores e estilos comuns para toda aplicação
+
+- **hooks** - Diretório para guardar os arquivos de imagem, cores e estilos comuns para toda aplicação
+
+- **pages** - Diretório onde ficam as telas da aplicação
+
+- **routes** - Diretório onde serão criados os arquivos de configuração de rotas
+
+- **services** - Diretório onde serão criados os arquivos relacionados a serviços.
+
 ### Instalação
 
 1. Para instalar e utilizar esse template basta fazer uma copia do projeto na sua máquina e rodar na raiz do projeto
@@ -112,22 +130,6 @@ npx react-native start
 ```sh
 npx react-native run-android
 ```
-
-- **src** - Diretório contendo todos os arquivos da aplicação.
-
-- **components** - Diretório contendo todos os arquivos de components communs da aplicação.
-
-- **config** - Diretório para guardar os arquivos de configuração.
-
-- **assets** - Diretório para guardar os arquivos de imagem, cores e estilos comuns para toda aplicação
-
-- **hooks** - Diretório para guardar os arquivos de imagem, cores e estilos comuns para toda aplicação
-
-- **pages** - Diretório onde ficam as telas da aplicação
-
-- **routes** - Diretório onde serão criados os arquivos de configuração de rotas
-
-- **services** - Diretório onde serão criados os arquivos relacionados a serviços.
 
 ## Licença
 
