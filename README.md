@@ -27,7 +27,7 @@ Este projeto tem o objetivo de criar um templete em React Native com TypeScript.
 
 O Designer foi feito no figma e pode ser acessado em: [Telas](https://www.figma.com/file/Au23xfPmQHFgLec6WGjNo5/React-native-template?node-id=0%3A1)
 
-![Alt text](relative/screens.png?raw=true "Designer")
+![Designer](/screens.png "Designer")
 
 ### Feito Com
 
