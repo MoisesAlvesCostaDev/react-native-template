@@ -1,6 +1,7 @@
 <br />
 <p align="center">
-  <h3 align="center">Template React Native com TypeScript (Android) </h3>
+  <h3 align="center">Template React Native com TypeScript </h3>
+  <h3 align="center">Validado para android e ios </h3>
 </p>
 
 ## Tabela de Conteúdo
@@ -21,7 +22,7 @@
 
 ## Sobre o Projeto
 
-Este projeto tem o objetivo de criar um templete em React Native com TypeScript. A principal motivação é diminuir o tempo inicial de desenvolvimento de um novos projetos.
+Este projeto tem o objetivo de criar um templete em React Native com TypeScript. A principal motivação é diminuir o tempo inicial de desenvolvimento de novos projetos.
 
 ## Designer
 
