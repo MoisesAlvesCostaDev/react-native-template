@@ -117,10 +117,12 @@ const Login = function Login(): JSX.Element {
           </TouchableOpacity>
         </BodyContainer>
       </Screen>
-      <Modal
-        setModalVisible={setModalVisible}
-        modalVisible={modalVisible}
-      ></Modal>
+      {modalVisible && (
+        <Modal
+          setModalVisible={setModalVisible}
+          modalVisible={modalVisible}
+        ></Modal>
+      )}
     </>
   );
 };
