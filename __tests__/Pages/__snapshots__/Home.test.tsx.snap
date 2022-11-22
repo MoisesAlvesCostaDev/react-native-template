@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test render Login screen renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#FF5C00",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#FFFFFF",
+          "borderTopLeftRadius": 30,
+          "borderTopRightRadius": 30,
+          "flexBasis": 0,
+          "flexGrow": 11,
+          "flexShrink": 1,
+          "paddingTop": 20,
+        },
+      ]
+    }
+  >
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      nativeID="animatedComponent"
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "#EDEDED",
+          "borderRadius": 12,
+          "height": 48,
+          "justifyContent": "center",
+          "opacity": 1,
+          "width": "50%",
+        }
+      }
+      testID="buttonStyled"
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#646464",
+              "fontSize": 16,
+            },
+          ]
+        }
+      >
+        Log out
+      </Text>
+    </View>
+  </View>
+</View>
+`;
