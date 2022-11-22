@@ -18,7 +18,6 @@ describe("test render and click button component", () => {
     const onClick = jest.fn();
     const { getByTestId } = render(<Button title="button" onPress={onClick} />);
     const buttonStyled = getByTestId("buttonStyled");
-    console.log(buttonStyled);
     fireEvent.press(buttonStyled);
     expect(onClick).toHaveBeenCalledTimes(1);
   });
