@@ -1,0 +1,162 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test render component with title and message default renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "height": "100%",
+        "justifyContent": "center",
+        "marginTop": 50,
+        "position": "absolute",
+        "width": "100%",
+      },
+    ]
+  }
+>
+  <Modal
+    animationType="slide"
+    hardwareAccelerated={false}
+    onRequestClose={[Function]}
+    transparent={true}
+    visible={true}
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "height": "100%",
+            "justifyContent": "center",
+            "marginTop": 50,
+            "position": "absolute",
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#FF5C00",
+              "borderRadius": 20,
+              "height": 157,
+              "paddingBottom": 15,
+              "paddingLeft": 15,
+              "paddingRight": 15,
+              "paddingTop": 15,
+              "width": 290,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "height": 30,
+                "justifyContent": "center",
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#FFFFFF",
+                  "fontSize": 16,
+                  "fontWeight": "bold",
+                },
+              ]
+            }
+          >
+            Não foi possível entrar
+          </Text>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "height": 60,
+                "marginTop": 10,
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#FFFFFF",
+                  "fontSize": 16,
+                },
+              ]
+            }
+          >
+            Usuáro ou senha inválidos
+          </Text>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "height": 30,
+                "justifyContent": "center",
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <View
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            nativeID="animatedComponent"
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#FFFFFF",
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "opacity": 1,
+                "width": 120,
+              }
+            }
+            testID="buttonStyled"
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "fontSize": 16,
+                    "fontWeight": "bold",
+                  },
+                ]
+              }
+            >
+              Ok
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </Modal>
+</View>
+`;

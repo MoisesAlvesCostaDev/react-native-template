@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Modal as ReactModal, Text } from "react-native";
+import React  from "react";
+import { Modal as ReactModal} from "react-native";
 import * as styled from "./styles";
 import { TitleScreen } from "assets/styles/Screen";
 
@@ -30,6 +30,7 @@ const Modal = ({
             </styled.BodyView>
             <styled.FooterView>
               <styled.ModalButton
+              testID="buttonStyled"
                 onPress={() => setModalVisible(!modalVisible)}
               >
                 <styled.ButtomText>Ok</styled.ButtomText>

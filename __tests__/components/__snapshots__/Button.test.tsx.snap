@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test render button component with title button renders correctly 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  nativeID="animatedComponent"
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#EDEDED",
+      "borderRadius": 12,
+      "height": 48,
+      "justifyContent": "center",
+      "opacity": 1,
+    }
+  }
+  testID="buttonStyled"
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#646464",
+          "fontSize": 16,
+        },
+      ]
+    }
+  >
+    button
+  </Text>
+</View>
+`;
